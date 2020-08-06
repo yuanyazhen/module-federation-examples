@@ -31,18 +31,22 @@ module.exports = {
     if (!isServer) {
       config.output.library = "next1";
       config.output.publicPath = "http://localhost:3000/_next/";
+      delete config.optimization.splitChunks
+      delete config.optimization.minimizer
+   mfConf.shared ={
+     lodash: deps['lodash']
+   }
+      // shouldnt have to do this
+      // config.plugins.push(
+      //   new webpack.ProvidePlugin({
+      //     React: "react",
+      //   })
+      // );
 
       // shouldnt have to do this
-      config.plugins.push(
-        new webpack.ProvidePlugin({
-          React: "react",
-        })
-      );
-
-      // shouldnt have to do this
-      Object.assign(config.resolve.alias, {
-        react: path.resolve(__dirname, "./react.js"),
-      });
+      // Object.assign(config.resolve.alias, {
+      //   react: path.resolve(__dirname, "./react.js"),
+      // });
     } else {
       // shouldnt have to do this
       config.externals = {

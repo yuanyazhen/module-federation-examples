@@ -1,13 +1,14 @@
 {
   "private": true,
   "scripts": {
-    "start": "concurrently \"cd next1; yarn dev \" \"cd next2; yarn dev\"",
+    "start": "concurrently \"cd next1; node ./copy-next.js yarn dev \" \"cd next2; yarn dev\"",
     "postinstall": "concurrently \"cd ./next1 && yarn\" \"cd next2 && yarn \""
   },
   "dependencies": {
     "concurrently": "^5.2.0"
   },
   "devDependencies": {
-    "lerna": "3.22.1"
+    "lerna": "3.22.1",
+    "ncp": "^2.0.0"
   }
 }
